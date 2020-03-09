@@ -2,6 +2,7 @@ package com.kgy.habbit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,7 +58,14 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             if (success) { // 로그인 성공
+
+                                String id = jsonObject.getString("userId");
+
                                 Toast.makeText(getApplicationContext(), "로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+
+                                SessionManage sessionManage = new SessionManage();
+                                sessionManage.setAttribute(LoginActivity.this, "userId", id);
+
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                             } else { // 로그인 실패

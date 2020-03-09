@@ -1,9 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="오늘의 목표"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffffff"/>
+
+    <TextView
+        android:id="@+id/goalCnt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="10개"
+        android:textStyle="bold"
+        android:textSize="60sp"
+        android:gravity="center"
+        android:paddingVertical="30dp"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffffff"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="현재 도전중"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingVertical="10dp"/>
+
+    <TextView
+        android:id="@+id/todayCnt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1개"
+        android:textStyle="bold"
+        android:textSize="60sp"
+        android:gravity="center"
+        android:paddingVertical="30dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+
+        <Button
+            android:id="@+id/plusBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="+"
+            android:textSize="60sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
