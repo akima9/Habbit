@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
+    private long backBtnTime;
     TextView todayCnt;
     String lsUserId;
 
@@ -98,4 +99,16 @@ public class MainActivity extends AppCompatActivity {
         queue.add(todayCntRequest);
     }
 
+    @Override
+    public void onBackPressed() {
+        long curTime = System.currentTimeMillis();
+        long gapTime = curTime - backBtnTime;
+
+        if ( 2000 >= gapTime && gapTime >= 0 ) {
+            super.onBackPressed();
+        } else {
+            backBtnTime = curTime;
+            Toast.makeText(MainActivity.this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

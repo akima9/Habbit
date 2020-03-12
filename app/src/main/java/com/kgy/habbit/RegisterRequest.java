@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class RegisterRequest extends StringRequest {
 
-    private static final String URL = "http://172.30.1.34/register.php";
+    private static final String URL = "http://15.164.250.22/register.php";
     private Map<String, String> map;
 
     public RegisterRequest(String userId, String userPw, Response.Listener<String> listener) {

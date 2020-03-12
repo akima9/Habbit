@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class IdDupeChkRequest extends StringRequest {
 
-    private static final String URL = "http://172.30.1.34/dupe_check.php";
+    private static final String URL = "http://15.164.250.22/dupe_check.php";
     private Map<String, String> map;
 
     public IdDupeChkRequest(String userId, Response.Listener<String> listener) {

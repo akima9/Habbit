@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class TodayCntRequest extends StringRequest {
 
-    private static final String URL = "http://172.30.1.34/today_count_select.php";
+    private static final String URL = "http://15.164.250.22/today_count_select.php";
     private Map<String, String> map;
 
     public TodayCntRequest(String userId, Response.Listener<String> listener) {
