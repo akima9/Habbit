@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private long backBtnTime;
     TextView todayCnt;
+    TextView goalCnt;
     String lsUserId;
 
     @Override
@@ -28,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 현재 개수
         todayCnt = findViewById(R.id.todayCnt);
+        // 목표 개수
+        goalCnt = findViewById(R.id.goalCnt);
+        // 플러스 버튼
         Button plusBtn = findViewById(R.id.plusBtn);
 
         // 로그인 한 ID를 가지고 오는 부분
@@ -37,21 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
         // 오늘 카운트 가지고 오는 부분
         getCount();
-//        Response.Listener<String> responseListener = new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                try {
-//                    JSONObject jsonObject = new JSONObject(response);
-//                    String goalCnt = jsonObject.getString("goalCnt");
-//                    todayCnt.setText(goalCnt+"개");
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        };
-//        TodayCntRequest todayCntRequest = new TodayCntRequest(lsUserId, responseListener);
-//        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-//        queue.add(todayCntRequest);
+
+        // 목표 카운트 가지고 오는 부분
+        getGoalCount();
 
         // 플러스 버튼 클릭
         plusBtn.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +90,24 @@ public class MainActivity extends AppCompatActivity {
         TodayCntRequest todayCntRequest = new TodayCntRequest(lsUserId, responseListener);
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
         queue.add(todayCntRequest);
+    }
+
+    public void getGoalCount(){
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String Cnt = jsonObject.getString("goalCnt");
+                    goalCnt.setText(Cnt+"개");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        TodayGoalCntRequest todayGoalCntRequest = new TodayGoalCntRequest(lsUserId, responseListener);
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+        queue.add(todayGoalCntRequest);
     }
 
     @Override

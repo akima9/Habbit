@@ -53,8 +53,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                CheckTypeTask task  = new CheckTypeTask();
-                task.execute();
+//                CheckTypeTask task  = new CheckTypeTask();
+//                task.execute();
 
                 String lsUserId = userId.getText().toString();
                 String lsUserPw = userPw.getText().toString();
@@ -95,38 +95,38 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private class CheckTypeTask extends AsyncTask<Void, Void, Void> {
-
-        ProgressDialog asyncDialog = new ProgressDialog(LoginActivity.this);
-
-        @Override
-        protected void onPreExecute() {
-            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            asyncDialog.setMessage("잠시만 기다려주세요.");
-            asyncDialog.show();
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-            try {
-                for (int i = 0; i < 5; i++) {
-                    Thread.sleep(500);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            asyncDialog.dismiss();
-            super.onPostExecute(aVoid);
-        }
-    }
+//    private class CheckTypeTask extends AsyncTask<Void, Void, Void> {
+//
+//        ProgressDialog asyncDialog = new ProgressDialog(LoginActivity.this);
+//
+//        @Override
+//        protected void onPreExecute() {
+//            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//            asyncDialog.setMessage("잠시만 기다려주세요.");
+//            asyncDialog.show();
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//
+//            try {
+//                for (int i = 0; i < 5; i++) {
+//                    Thread.sleep(500);
+//                }
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void aVoid) {
+//            asyncDialog.dismiss();
+//            super.onPostExecute(aVoid);
+//        }
+//    }
 
     @Override
     public void onBackPressed() {
