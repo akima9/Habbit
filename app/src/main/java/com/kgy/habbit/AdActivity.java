@@ -41,6 +41,7 @@ public class AdActivity extends AppCompatActivity {
                 // Code to be executed when the interstitial ad is closed.
                 Intent intent = new Intent(AdActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
