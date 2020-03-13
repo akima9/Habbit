@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         // 첨엔 값이 없으므로 키값은 원하는 것으로 하시고 값을 null을 줍니다.
         loginId = auto.getString("inputId",null);
         if(loginId != null) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, AdActivity.class);
             startActivity(intent);
             finish();
         }

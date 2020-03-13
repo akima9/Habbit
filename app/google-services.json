@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "533220674898",
+    "firebase_url": "https://habbit-2b159.firebaseio.com",
+    "project_id": "habbit-2b159",
+    "storage_bucket": "habbit-2b159.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533220674898:android:268e8fd95513a68fa07e8b",
+        "android_client_info": {
+          "package_name": "com.kgy.habbit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533220674898-qph1au9m4ddjsa303kjt354ndspcb36p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkVWmfFAufVKYkNJgp1h--0xO-II274_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533220674898-qph1au9m4ddjsa303kjt354ndspcb36p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
