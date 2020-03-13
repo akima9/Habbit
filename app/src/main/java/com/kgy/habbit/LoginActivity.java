@@ -2,9 +2,11 @@ package com.kgy.habbit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private long backBtnTime;
     EditText userId;
     EditText userPw;
+    String loginId, loginPwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,17 @@ public class LoginActivity extends AppCompatActivity {
 
         Button registerBtn = findViewById(R.id.registerBtn); // 회원가입 버튼
         Button loginBtn = findViewById(R.id.loginBtn); // 로그인 버튼
+
+        // 자동 로그인 확인 부분
+        SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
+        // getString의 첫 번째 인자는 저장될 키, 두 번쨰 인자는 값입니다.
+        // 첨엔 값이 없으므로 키값은 원하는 것으로 하시고 값을 null을 줍니다.
+        loginId = auto.getString("inputId",null);
+        if(loginId != null) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         // 회원가입 버튼 클릭
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -53,9 +67,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                CheckTypeTask task  = new CheckTypeTask();
-//                task.execute();
-
                 String lsUserId = userId.getText().toString();
                 String lsUserPw = userPw.getText().toString();
 
@@ -70,6 +81,12 @@ public class LoginActivity extends AppCompatActivity {
                                 String id = jsonObject.getString("userId");
 
                                 Toast.makeText(getApplicationContext(), "로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+
+                                SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
+                                //auto의 loginId와 loginPwd에 값을 저장해 줍니다.
+                                SharedPreferences.Editor autoLogin = auto.edit();
+                                autoLogin.putString("inputId", id);
+                                autoLogin.commit();
 
                                 SessionManage sessionManage = new SessionManage();
                                 sessionManage.setAttribute(LoginActivity.this, "userId", id);
@@ -94,39 +111,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-//    private class CheckTypeTask extends AsyncTask<Void, Void, Void> {
-//
-//        ProgressDialog asyncDialog = new ProgressDialog(LoginActivity.this);
-//
-//        @Override
-//        protected void onPreExecute() {
-//            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//            asyncDialog.setMessage("잠시만 기다려주세요.");
-//            asyncDialog.show();
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//
-//            try {
-//                for (int i = 0; i < 5; i++) {
-//                    Thread.sleep(500);
-//                }
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//
-//            return null;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Void aVoid) {
-//            asyncDialog.dismiss();
-//            super.onPostExecute(aVoid);
-//        }
-//    }
 
     @Override
     public void onBackPressed() {
