@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText userId;
     EditText userPw1;
     EditText userPw2;
+    EditText userGoal;
     private String dupeChkFlag;
 
     @Override
@@ -38,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         userId = findViewById(R.id.userId);
         userPw1 = findViewById(R.id.userPw1);
         userPw2 = findViewById(R.id.userPw2);
+        userGoal = findViewById(R.id.userGoal);
         Button idDupeChkBtn = findViewById(R.id.idDupeChkBtn);
         Button registerBtn = findViewById(R.id.registerBtn);
 
@@ -92,6 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String lsUserId = userId.getText().toString();
                 String lsUserPw1 = userPw1.getText().toString();
                 String lsUserPw2 = userPw2.getText().toString();
+                String lsGoalCnt = userGoal.getText().toString();
 
                 if (lsUserId != null || lsUserId.length() > 0) { // 아이디를 입력한 경우
                     // 아이디 유효성 검사
@@ -132,6 +135,16 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (lsGoalCnt != null || lsGoalCnt.length() > 0 ){
+                    if (!Pattern.matches("^[0-9]$", lsGoalCnt)) {
+                        Toast.makeText(getApplicationContext(), "숫자로만 입력해주세요.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "목표 개수를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -152,7 +165,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
 
-                RegisterRequest registerRequest = new RegisterRequest(lsUserId, lsUserPw1, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(lsUserId, lsUserPw1, lsGoalCnt, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
             }

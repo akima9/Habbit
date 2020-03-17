@@ -57,6 +57,16 @@
             android:layout_marginBottom="25dp"
             android:backgroundTint="#ffbf00"/>
 
+        <EditText
+            android:id="@+id/userGoal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="첫 목표 개수를 입력해주세요.(예. 5)"
+            android:inputType="text"
+            android:layout_marginBottom="25dp"
+            android:backgroundTint="#ffbf00"/>
+
         <Button
             android:id="@+id/registerBtn"
             android:layout_width="match_parent"

@@ -39,8 +39,6 @@ public class AdActivity extends AppCompatActivity {
             @Override
             public void onAdClosed() {
                 // Code to be executed when the interstitial ad is closed.
-                Intent intent = new Intent(AdActivity.this, MainActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
